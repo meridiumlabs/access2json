@@ -65,3 +65,6 @@ Dump all data of the protected database to the file **dump.js**
 access2json json --database phonebook.mdb --password 123456 --out-file c:\users\john\dump.js  
 ```
 
+## Prerequisites
+
+If you get an error when running the application that says something like **The 'microsoft.ace.oledb.12.0' provider is not registered on the local machine**, you probably don't have an Access db engine installed. Follow [these instructions](https://social.msdn.microsoft.com/Forums/en-US/1d5c04c7-157f-4955-a14b-41d912d50a64/how-to-fix-error-the-microsoftaceoledb120-provider-is-not-registered-on-the-local-machine?forum=vstsdb) to get that stuff installed.
