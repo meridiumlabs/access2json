@@ -10,8 +10,8 @@ Two options are common for both the `info` and the `json` verbs
 
 | option | description |
 |--------|-------------|
-| --database | the path to Access database file |
-| --password | password of the database, if it is protected |
+| `--database` | the path to Access database file |
+| `--password` | password of the database, if it is protected |
 
 ### info
 
@@ -21,7 +21,7 @@ The info verb displays metadata about the tables in the database.
 
 | option | description |
 |--------|-------------|
-| -t, --table | display info about a specific table | 
+| `-t, --table` | display info about a specific table | 
 
 **Examples**
 
@@ -45,11 +45,11 @@ Generates JSON from the data in the database. There are a few options you can us
 
 | option | description |
 |--------|-------------|
-| -t, --tables | Dump data from these tables. Separate names with a comma. Default is to dump all tables. | 
-| -o, --out-file | A file path. Write the resulting JSON to this file. The default is to write output to standard out. |
-| --pretty | Indent the JSON output nice and pretty. The default is one line |
-| --normalize | Try to make property names usable via dot notation by removing diacritics and replacing non-identifier characters with underscores. |
-| --force-numbers | If a string value from the database looks like a number, cast it to a number in the output |
+| `-t, --tables` | Dump data from these tables. Separate names with a comma. Default is to dump all tables. | 
+| `-o, --out-file` | A file path. Write the resulting JSON to this file. The default is to write output to standard out. |
+| `--pretty` | Indent the JSON output nice and pretty. The default is one line |
+| `--normalize` | Try to make property names usable via dot notation by removing diacritics and replacing non-identifier characters with underscores. |
+| `--force-numbers` | If a string value from the database looks like a number, cast it to a number in the output |
 
 **Examples**
 
