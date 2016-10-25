@@ -66,5 +66,7 @@ access2json json --database phonebook.mdb --password 123456 --out-file c:\users\
 ```
 
 ## Prerequisites
+You'll need the Microsoft Access Database Engine installed. This can be downloaded here:
+[https://www.microsoft.com/en-us/download/details.aspx?id=13255](https://www.microsoft.com/en-us/download/details.aspx?id=13255)
 
 If you get an error when running the application that says something like **The 'microsoft.ace.oledb.12.0' provider is not registered on the local machine**, you probably don't have an Access db engine installed. Follow [these instructions](https://social.msdn.microsoft.com/Forums/en-US/1d5c04c7-157f-4955-a14b-41d912d50a64/how-to-fix-error-the-microsoftaceoledb120-provider-is-not-registered-on-the-local-machine?forum=vstsdb) to get that stuff installed.
