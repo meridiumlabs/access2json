@@ -38,13 +38,20 @@ namespace Access2Json {
                 }
                 json.WriteStartObject();
                 foreach (var table in tables) {
-                    json.WritePropertyName(options.Normalized(table.Name));
+                    var normalizedTableName = options.Normalized(table.Name);
+                    json.WritePropertyName(normalizedTableName);
                     json.WriteStartArray();
                     foreach (var row in table.Rows) {
                         json.WriteStartObject();
                         foreach (var field in row.Fields) {
-                            json.WritePropertyName(options.Normalized(field.Name));
-                            json.WriteValue(options.CastNumber(field.Value));
+                            var normalizedFieldName = options.Normalized(field.Name);
+                            json.WritePropertyName(normalizedFieldName);
+                            json.WriteValue(
+                                options.KeepList.Any(x => x.Key.Equals(normalizedTableName)
+                                                            && x.Value.Equals(normalizedFieldName))
+                                    ? field.Value
+                                    : options.CastNumber(field.Value)
+                                );
                         }
                         json.WriteEndObject();
                     }
@@ -141,6 +148,20 @@ namespace Access2Json {
         [Option("force-numbers",
                 HelpText="Cast all values that look like a number to double")]
         public bool ForceNumbers { get; set; }
+
+        [Option("keep-text", HelpText = "Properties to leave unharmed. Commaseparated string in format [table].[property] (normalized names)")]
+        public string KeepText { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> KeepList {
+            get {
+                if (string.IsNullOrEmpty(KeepText))
+                    return new List<KeyValuePair<string, string>>();
+                var tablesAndProperties = KeepText.Split(',');
+                return tablesAndProperties.Select(tp => tp.Split('.'))
+                    .Select(data => new KeyValuePair<string, string>(data[0], data[1]))
+                    .ToList();
+            }
+        }
 
         public object CastNumber(object value) {
             if (!ForceNumbers) return value;
