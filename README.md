@@ -50,6 +50,7 @@ Generates JSON from the data in the database. There are a few options you can us
 | `--pretty` | Indent the JSON output nice and pretty. The default is one line |
 | `--normalize` | Try to make property names usable via dot notation by removing diacritics and replacing non-identifier characters with underscores. |
 | `--force-numbers` | If a string value from the database looks like a number, cast it to a number in the output |
+| `--keep-text`| Comma separated property names that will be kept as text no matter what |
 
 **Examples**
 
